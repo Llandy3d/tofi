@@ -5,3 +5,8 @@ def add_service(name, token, path):
         raise FileExistsError
 
     service.write_text(token)
+
+
+def list_services(path):
+    """Returns the list of services previously added."""
+    return [service.name for service in path.iterdir()]
