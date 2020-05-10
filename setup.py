@@ -21,4 +21,9 @@ setuptools.setup(
         "Operating System :: POSIX :: Linux",
     ],
     python_requires='>=3.6',
+    entry_points = {
+        "console_scripts": [
+                "tofi = tofi.cli:main",
+            ],
+    }
 )
