@@ -1,6 +1,6 @@
 import pytest
 
-from tofi.services import add_service, list_services
+from tofi.services import add_service, list_services, retrieve_service
 from tofi.config import ensure_config_paths
 
 
@@ -34,3 +34,17 @@ def test_list_services_with_a_service(mock_config_paths):
     add_service('test', 'secret_test', mock_config_paths[1])
 
     assert list_services(mock_config_paths[1]) == ['test']
+
+
+def test_retrieve_service_with_existing_secret(mock_config_paths):
+    ensure_config_paths()
+    add_service('test', 'secret_test', mock_config_paths[1])
+
+    assert retrieve_service('test', mock_config_paths[1]) == 'secret_test'
+
+
+def test_retrieve_service_without_existing_secret(mock_config_paths):
+    ensure_config_paths()
+
+    with pytest.raises(FileNotFoundError):
+        retrieve_service('test', mock_config_paths[1])
