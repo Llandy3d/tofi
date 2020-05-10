@@ -4,5 +4,6 @@ __pycache__
 
 dist/
 build/
+tofi.egg-info/
 
 venv/
