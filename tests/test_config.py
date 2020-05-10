@@ -49,7 +49,6 @@ def test_get_or_create_retrieves_config(monkeypatch, tmp_path):
         f.write(data)
 
     config = get_or_create_config()
-    breakpoint()
 
     assert config.sections()[0] == 'test'
     assert config['test']['data'] == 'data'
